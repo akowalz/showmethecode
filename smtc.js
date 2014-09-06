@@ -11,6 +11,7 @@ var githubPage = (function() {
 
     filesAndDirectories: $('.files tr'),
 
+    // TODO
     currentDepth: 0
   };
 })();
@@ -25,8 +26,8 @@ var githubAPI = (function() {
         {
           url: apiURL + '/repos/' + owner + '/' + repo + '/git/trees/' + sha,
           data: {
-                  'recursive': 1,
-                  'access_token': accessToken
+                  'recursive': 1
+                  //'access_token': accessToken
                 }
         }
       );
@@ -53,7 +54,9 @@ $(function() {
           size = sizeOfDirectory(name, treeData);
         }
 
-        $(this).append('<td><span style="color: #888">' + size + '</span><td>');
+        $(this).append('<td><span class="smtc-size">' +
+                       prettySize(size) +
+                       'b</span><td>');
       });
     });
 
@@ -70,4 +73,7 @@ $(function() {
     }
     return size;
   }
+
+  // TODO
+  function prettySize(size) { return size; }
 });
