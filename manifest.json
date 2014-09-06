@@ -12,8 +12,10 @@
   "content_scripts": [
     {
       "matches": ["https://github.com/*/*"],
-      "css":     ["style.css"],
-      "js":      ["jquery-2.1.1.js","smtc.js"]
+      "css":     ["smtc.css"],
+      "js":      ["jquery-2.1.1.js",
+                  "js/smtc.js",
+                  "js/github.js"]
     }
   ]
 }
