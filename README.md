@@ -5,6 +5,5 @@ repositories
 
 #### TODO
 
-* Make it work on nested directories
 * Turn bytes to human readable format
 * [would be cool] Give the Spans a fixed width, color them a size based on length
