@@ -1,18 +1,37 @@
+var utils = (function() {
+  return { location: function()
+    { return window.location; }
+  };
+})()
+
 var githubPage = (function() {
   return {
-    user: window.location.pathname.split('/')[1],
+    user: function() {
+      return utils.location().pathname.split('/')[1];
+    },
 
-    repo: window.location.pathname.split('/')[2],
+    repo: function() {
+      return utils.location().pathname.split('/')[2];
+    },
 
-    sha: (function() {
-      var shaLink = $('.sha-block').parent().find('a').attr('href').split('/')
+    sha: function() {
+      var shaLink = $('.sha-block').parent().find('a').attr('href').split('/');
       return shaLink[shaLink.length - 1];
-    })(),
+    },
 
-    filesAndDirectories: $('.files tr'),
+    filesAndDirectories: function() {
+      return $('.files tr');
+    },
 
-    // TODO
-    currentDepth: 0
+    currentDepth: function() {
+      var uri = utils.location().pathname.split('/');
+      if (uri.length === 3) { return 0; }
+      else { return uri.length - 5; }
+    },
+
+    currentPath: function() {
+      return utils.location().pathname.split('/').slice(5).join('/');
+    }
   };
 })();
 
@@ -24,10 +43,13 @@ var githubAPI = (function() {
     tree: function(owner,repo,sha) {
       return $.ajax(
         {
-          url: apiURL + '/repos/' + owner + '/' + repo + '/git/trees/' + sha,
+          url: apiURL +
+               '/repos/' +
+               owner +
+               '/' + repo + '/git/trees/'
+               + sha,
           data: {
                   'recursive': 1
-                  //'access_token': accessToken
                 }
         }
       );
