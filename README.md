@@ -1,6 +1,6 @@
 # Show me the code!
 
-A Chrome extension that displays size data on Github repository pages using data
+A Chrome extension that displays file and directory size information on Github repository pages using data
 from the Github public API.
 
 Here's a screen shot for what it looks like right now (for this repository):
