@@ -36,7 +36,6 @@ var githubPage = (function() {
 })();
 
 var githubAPI = (function() {
-  var accessToken = '7c57cefa8bfaba6b6ea288314b70e8efa612626d'
   var apiURL = 'https://api.github.com'
 
   return {
